@@ -20,7 +20,12 @@ get '/:id/edit' do
 end
 
 post '/:id/edit' do
+<<<<<<< HEAD
 	Party.update(params[:id], params.slice("name", "address", "lat", "long", "starts_at"))
+=======
+	Party.update(params[:id], 
+		params.slice("name", "address","lat","long","starts_at"))
+>>>>>>> 47622336e0da2702b5f1ed3fcf6a2586b58862cc
 	redirect '/'
  end
 
