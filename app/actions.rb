@@ -22,7 +22,7 @@ post '/create' do
 		long: params[:long],
 		starts_at: params[:starts_at]
 		})
-	redirect '/'
+	redirect '/', notice: 'Party created'
 end
 # show individual post
 get '/:id' do
@@ -39,7 +39,7 @@ end
 
 post '/:id/edit' do
 	Party.update(params[:id], params.slice("name", "address", "lat", "long", "starts_at"))
-	redirect '/'
+	redirect '/', notice: 'Party updated'
  end
 
 
@@ -51,7 +51,7 @@ end
 # method to remove an existing party
 get '/:id/remove' do
   Party.destroy(params[:id])
-  redirect "/", notice: 'Removed'
+  redirect "/", notice: 'Party Removed'
 end
 
 # route to add users to party
