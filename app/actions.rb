@@ -14,6 +14,11 @@ get '/:id' do
 end
 
 # form to edit a single party
+get '/:id/edit' do
+	@party = Party.find(params[:id])
+	erb :edit
+end
+
 post '/:id/edit' do
 	party = Party.find(params[:id])
 	party.update({
