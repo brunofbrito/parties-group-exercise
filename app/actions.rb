@@ -1,4 +1,7 @@
 require 'rack-flash'
+require 'sinatra/redirect_with_flash'
+enable :sessions
+
 use Rack::Flash
 
 # list of all parties
@@ -54,7 +57,16 @@ end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
+	attendees = Attendee.all
+	unique_email = attendees.map do |attendee|
+		attendee.email
+	end
+	if params[:email] == unique_email
+		flash[:error] = "E-mail already exists"
+	else
+		Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
+		flash[:notice] = "Attendee successfuly addedd"
+	end
 	redirect "/#{params[:id]}"
 end
 
