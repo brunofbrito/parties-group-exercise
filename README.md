@@ -10,8 +10,8 @@ Dummy date. Run tux and paste the following code:
 Party.create(
   name: 'Cool Party',
   address: 'Lisbon',
-  lat: '1.2345'
-	long: '5.4321'
-	starts_at: Time.now
+  lat: '1.2345',
+  long: '5.4321',
+  starts_at: Time.now
 )
 ```
