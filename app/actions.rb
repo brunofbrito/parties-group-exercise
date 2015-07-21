@@ -1,4 +1,6 @@
 require 'rack-flash'
+require 'sinatra/redirect_with_flash'
+enable :sessions
 use Rack::Flash
 
 # list of all parties
@@ -49,7 +51,7 @@ end
 # method to remove an existing party
 get '/:id/remove' do
   Party.destroy(params[:id])
-  redirect "/"
+  redirect "/", notice: 'Removed'
 end
 
 # route to add users to party
