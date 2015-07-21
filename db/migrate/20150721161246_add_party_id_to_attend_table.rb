@@ -1,5 +1,5 @@
 class AddPartyIdToAttendTable < ActiveRecord::Migration
   def change
-  	add_column :attendee, :party_id, :integer
+  	add_column :attendees, :party_id, :integer
   end
 end

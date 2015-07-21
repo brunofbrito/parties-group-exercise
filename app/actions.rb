@@ -53,6 +53,6 @@ end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	Attendee.create(name: params[:name], email: params[:email])
+	Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
 	redirect "/#{params[:id]}"
 end
