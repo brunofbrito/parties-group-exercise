@@ -49,7 +49,7 @@
 				<tr>
 					<td><%= attendee.name %></td>
 					<td><%= attendee.email %></td>
-					<td><a href="<%= attendee.id%>/remove" class="btn">Delete</a></td>
+					<td><a href="<%= @party.id %>/<%= attendee.id %>/remove_attendee" class="btn">Delete</a></td>
 				</tr>
 			<% end %>
 			</table>
