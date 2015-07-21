@@ -69,5 +69,5 @@ end
 # route to delete users attendess 
 get '/:party_id/:id/remove_attendee' do
 	Attendee.destroy(params[:id])
-	redirect "/#{params[:party_id]}"
+	redirect "/#{params[:party_id]}", notice: 'Attendee removed'
 end
