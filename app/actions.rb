@@ -1,3 +1,6 @@
+require 'rack-flash'
+use Rack::Flash
+
 # list of all parties
 get '/' do
   @parties = Party.all
