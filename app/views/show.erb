@@ -14,18 +14,18 @@
           <tr>
             <th>Name</th>
             <th>Address</th>
-            <th>Coordinates</th>
-						<th>Date</th>
-						<th>Time</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Date</th>
             <th class="td-actions">Actions</th>
           </tr>
         </thead>
           <tr>
             <td><%= @parties.name %></td>
             <td><%= @parties.address %></td>
-            <td><%= @parties.coordinates %></td>
-            <td><%= @parties.date %></td>
-            <td><%= @parties.time %></td>
+            <td><%= @parties.lat %></td>
+            <td><%= @parties.long %></td>
+            <td><%= @parties.starts_at %></td>
             <td class="td-actions">
               <a href="/" class="btn">
                 Back
