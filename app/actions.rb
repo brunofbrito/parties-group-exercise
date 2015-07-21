@@ -52,3 +52,7 @@ get '/:id/remove' do
 end
 
 # route to add users to party
+post '/add_attendee/:id' do
+	Attendee.create(name: params[:name], email: params[:email])
+	redirect "/#{params[:id]}"
+end
