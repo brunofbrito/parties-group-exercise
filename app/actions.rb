@@ -56,7 +56,12 @@ end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
+	email_exists = Attendee.where(email: params[:email]).exists?
+	if email_exists
+		flash[:notice] = 'Error the email you are using is already registered for the party'
+	else
+		Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
+	end
 	redirect "/#{params[:id]}"
 end
 
