@@ -8,7 +8,16 @@ end
 
 # form to edit a single party
 get '/:id/edit' do
-end
+	party = Party.find(params[:id])
+	party.update({
+		name: params[:name],
+		address: params[:adress],
+		lat: params[:lat],
+		long: params[:long],
+		starts_at: params[:starts_at]
+		})
+	redirect '/'
+ end
 
 # form to create a new party
 get '/new' do
