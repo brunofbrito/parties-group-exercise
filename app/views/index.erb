@@ -20,8 +20,8 @@
             <th class="td-actions">Actions</th>
           </tr>
         </thead>
+          <% @parties.each do |party| %>
           <tr>
-            <% @parties.each do |party| %>
             <td>
               <a href="/<%= party.id %>"><%= party.name %></a>
             </td>
@@ -37,9 +37,9 @@
                 Show
               </a>
                 <a href="/<%= party.id %>/remove"><button class="btn btn-danger">Remove</button></a>
-              <% end %>
             </td>
           </tr>
+          <% end %>
       </table>
     </div>
     <div class="col-sm-3">
