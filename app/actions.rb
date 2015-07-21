@@ -8,8 +8,8 @@ end
 
 # form to edit a single party
 get '/:id/edit' do
-	@party = Party.find(params[:id])
-	@party.update({
+	party = Party.find(params[:id])
+	party.update({
 		name: params[:name],
 		address: params[:adress],
 		coordinates: params[:coordinates],
