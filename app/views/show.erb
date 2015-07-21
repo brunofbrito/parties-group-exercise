@@ -17,6 +17,7 @@
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Date</th>
+            <th>Attendees</th>
             <th class="td-actions">Actions</th>
           </tr>
         </thead>
@@ -26,6 +27,7 @@
             <td><%= @party.lat %></td>
             <td><%= @party.long %></td>
             <td><%= @party.starts_at %></td>
+						<td><%= @party.attendee.count %></td>
             <td class="td-actions">
               <a href="/" class="btn">
                 Back
