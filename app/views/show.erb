@@ -37,7 +37,24 @@
       </table>
     </div>
   </div>
-
+	<div class="row">
+		<div class="col-sm-9">
+			<table class="table">
+				<thead>
+					<th>Name</th>
+					<th>Email</th>
+					<th class="td-actions">Actions</th>
+				</thead>
+				<% @attendee.each do |attendee| %>
+				<tr>
+					<td><%= attendee.name %></td>
+					<td><%= attendee.email %></td>
+					<td><a href="<%= attendee.id%>/remove" class="btn">Delete</a></td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-sm-9">
 			<h3>Add attendee to party</h3>
