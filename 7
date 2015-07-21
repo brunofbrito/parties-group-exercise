@@ -25,7 +25,6 @@ end
 # show individual post
 get '/:id' do
 	@party = Party.find(params[:id])
-	@attendee = Attendee.all
 	erb :show
 end
 
@@ -58,9 +57,8 @@ post '/add_attendee/:id' do
 	redirect "/#{params[:id]}"
 end
 
-
 # route to delete users attendess 
-get '/:party_id/:id/remove_attendee' do
+get '/:id/remove' do
 	Attendee.destroy(params[:id])
-	redirect "/#{params[:party_id]}"
+	redirect "/#{params[:party_id]"
 end
