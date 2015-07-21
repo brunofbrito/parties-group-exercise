@@ -50,3 +50,5 @@ get '/:id/remove' do
   Party.destroy(params[:id])
   redirect "/"
 end
+
+# route to add users to party
