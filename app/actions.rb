@@ -22,7 +22,7 @@ post '/create' do
 		long: params[:long],
 		starts_at: params[:starts_at]
 		})
-	redirect '/'
+	redirect '/', notice: 'Party created'
 end
 # show individual post
 get '/:id' do
@@ -39,7 +39,7 @@ end
 
 post '/:id/edit' do
 	Party.update(params[:id], params.slice("name", "address", "lat", "long", "starts_at"))
-	redirect '/'
+	redirect '/', notice: 'Party updated'
  end
 
 
@@ -51,20 +51,16 @@ end
 # method to remove an existing party
 get '/:id/remove' do
   Party.destroy(params[:id])
-  redirect "/", notice: 'Removed'
+  redirect "/", notice: 'Party Removed'
 end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	attendees = Attendee.all
-	unique_email = attendees.map do |attendee|
-		attendee.email
-	end
-	if params[:email] == unique_email
-		flash[:error] = "E-mail already exists"
+	email_exists = Attendee.where(email: params[:email]).exists?
+	if email_exists
+		flash[:notice] = 'Error the email you are using is already registered for the party'
 	else
 		Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
-		flash[:notice] = "Attendee successfuly addedd"
 	end
 	redirect "/#{params[:id]}"
 end
