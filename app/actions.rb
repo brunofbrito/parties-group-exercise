@@ -9,10 +9,12 @@ end
 
 # show individual post
 get '/:id' do
+		@party = Party.find(params[:id])
+		erb :show
 end
 
 # form to edit a single party
-get '/:id/edit' do
+post '/:id/edit' do
 	party = Party.find(params[:id])
 	party.update({
 		name: params[:name],
