@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-header">
+        <h1>Parties Description</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Date</th>
+            <th class="td-actions">Actions</th>
+          </tr>
+        </thead>
+          <tr>
+            <td><%= @parties.name %></td>
+            <td><%= @parties.address %></td>
+            <td><%= @parties.lat %></td>
+            <td><%= @parties.long %></td>
+            <td><%= @parties.starts_at %></td>
+            <td class="td-actions">
+              <a href="/" class="btn">
+                Back
+              </a>
+            </td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
