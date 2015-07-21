@@ -36,16 +36,16 @@ Party.create(
 
 Attendee.create(
     name: "Bruno",
-    e-mail: "bruno@gmail.com"
+    email: "bruno@gmail.com"
 )
 
 Attendee.create(
     name: "Ricardo",
-    e-mail: "ricardo@gmail.com"
+    email: "ricardo@gmail.com"
 )
 
 Attendee.create(
     name: "Rui",
-    e-mail: "rui@gmail.com"
+    email: "rui@gmail.com"
 )
 ```
