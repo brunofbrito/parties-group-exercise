@@ -1,0 +1,28 @@
+.button-group {
+  text-align: right;
+}
+
+.button-group .btn:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+table {
+  table-layout: fixed;
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+.td-actions {
+  text-align: right;
+}
+
+.td-actions *  {
+  display: inline-block;
+}
+
+.td-actions *:not(:last-child) {
+  margin-right: 10px;
+}
