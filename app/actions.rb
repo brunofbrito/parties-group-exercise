@@ -20,14 +20,8 @@ get '/:id/edit' do
 end
 
 post '/:id/edit' do
-	party = Party.find(params[:id])
-	party.update({
-		name: params[:name],
-		address: params[:adress],
-		lat: params[:lat],
-		long: params[:long],
-		starts_at: params[:starts_at]
-		})
+	Party.update(params[:id], 
+		params.slice("name", "address","lat","long","starts_at"))
 	redirect '/'
  end
 
