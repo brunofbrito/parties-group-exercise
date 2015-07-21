@@ -1,0 +1,10 @@
+<h1>Edit party</h1>
+
+<form method="post" action="/<%= @party.id %>/edit">
+  Name: <input type="text" name="name" value="<%= @party.name%>"><br>
+  Address: <input type="text" name="address" value="<%= @party.address%>"><br>
+  Latitude: <input type="text" name="lat" value="<%= @party.lat%>"><br>
+  Longitude: <input type="text" name="long" value="<%= @party.long%>"><br>
+  Date: <input type="datetime" name="starts_at" value="<%= @party.starts_at%>"><br>
+  <button type="submit">Edit</button>
+</form>
