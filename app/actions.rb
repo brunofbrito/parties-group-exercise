@@ -1,5 +1,7 @@
 # list of all parties
 get '/' do
+  @parties = Party.all
+  erb :index
 end
 
 # show individual post
