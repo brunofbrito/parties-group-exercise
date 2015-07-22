@@ -27,6 +27,9 @@ end
 
 # method to save a new party, the /new route should point here
 post '/create' do
+	if params.empty?
+		flash[:error] = "Empty fields"
+	else	
 	Party.create({
 		name: params[:name],
 		address: params[:address],
@@ -34,6 +37,7 @@ post '/create' do
 		long: params[:long],
 		starts_at: params[:starts_at]
 		})
+	end
 	redirect '/', notice: 'Party created'
 end
 
