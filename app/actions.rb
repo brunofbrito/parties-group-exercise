@@ -7,10 +7,15 @@ use Rack::Flash
 get '/' do
   if params[:query]
   	@parties = Party.where("lower(name) = ?", params[:query].downcase)
+  elsif params[:sort] == "asc"
+  	@parties = Party.order(:starts_at)
+  elsif params[:sort] == "desc"
+  	@parties = Party.order(starts_at: :desc)
   else
   	@parties = Party.all
   end
   erb :index
+
 end
 
 # form to create a new party
