@@ -1,4 +1,5 @@
 require 'rack-flash'
+require 'csv'
 require 'sinatra/redirect_with_flash'
 enable :sessions
 use Rack::Flash
@@ -68,12 +69,7 @@ end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	email_exists = Attendee.where(email: params[:email]).exists?
-	if email_exists
-		flash[:notice] = 'Error the email you are using is already registered for the party'
-	else
-		Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
-	end
+	Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
 	redirect "/#{params[:id]}"
 end
 
@@ -96,13 +92,17 @@ end
 
 get '/:party_id/import' do
   party = Party.find(params[:party_id])
-  CSV.open("#{party.name}.txt", "r") do |f|
-    csv = CSV.parse(filename, :headers => true) do |row|
-    	Attendee.create!(row.to_hash)
-    	end 
+  # CSV.open("attendees.csv", "r") do |f|
+  #   f = CSV.parse("attendees.csv", :headers => true) do |row|
+  #   	puts row.inspect
+  #   	Attendee.create!(row.to_hash)
+  #   end
+
     # party.attendees.each do |attendee|
       # f << "#{attendee.name}\n"
-   
+   CSV.foreach("attendees.csv", headers: true) do |row|
+   	puts row.to_hash.inspect
+   	party.attendees.create(row.to_hash)
   end
   redirect "/#{params[:party_id]}"
 end
