@@ -73,7 +73,7 @@ post '/add_attendee/:id' do
 	 redirect "/#{params[:id]}", error: 'Attendee field empty'
   else
     Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
-    redirect "/#{params[:id]}", notice: 'Attendee successfuly addede'
+    redirect "/#{params[:id]}", notice: 'Attendee successfuly added'
   end
 end
 
