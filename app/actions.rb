@@ -22,19 +22,25 @@ end
 # form to create a new party
 
 get '/new' do
+	@party = Party.new
 	erb :new
 end
 
 # method to save a new party, the /new route should point here
 post '/create' do
-	Party.create({
+	@party = Party.new({
 		name: params[:name],
 		address: params[:address],
 		lat: params[:lat],
 		long: params[:long],
 		starts_at: params[:starts_at]
 		})
-	redirect '/', notice: 'Party created'
+
+	if @party.save
+		redirect '/', notice: 'Party created'
+	else
+		erb :new
+	end
 end
 
 # show individual party

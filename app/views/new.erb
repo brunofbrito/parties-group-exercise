@@ -1,10 +1,45 @@
-<h1>Create your Party</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-header">
+				<h1>Create your Party</h1>
+			</div><!-- /.page-header -->
+		</div><!-- /.col-sm-12 -->
+	</div><!-- /.row -->
 
-<form method="post" action="/create">
-  Name: <input type="text" name="name"><br>
-  Address: <input type="text" name="address"><br>
-  Latitude: <input type="text" name="lat"><br>
-  Longitude: <input type="text" name="long"><br>
-  Date: <input type="date" name="starts_at"><br>
-  <button type="submit">Create</button>
-</form>
+	<%= @party.errors.full_messages %>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<form method="post" action="/create" class="user-form">
+				<div class="input-group">
+					<label for="name">Name</label>
+					<input type="text" name="name" class="form-control">
+				</div>	
+				<div class="input-group">
+					<label for="address">Address</label>
+					<input type="text" name="address" class="form-control">
+				</div>
+				<div class="input-group">
+					<label for="lat">Latitude</label>
+					<input type="text" name="lat" class="form-control">
+				</div>
+				
+				<div class="input-group">
+					<label for="long">Longitude</label>
+					<input type="text" name="long" class="form-control">
+				</div>
+				
+				<div class="input-group">
+				<label for="starts_at">Date</label>
+				<input type="date" name="starts_at" class="form-control">
+				</div>
+				<br>
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-default btn-success">Create</button>
+				</span>
+			</form>
+		</div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+
+</div><!-- /.container -->
