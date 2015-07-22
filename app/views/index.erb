@@ -3,11 +3,26 @@
     <div class="col-sm-12">
       <div class="page-header">
         <h1>Parties</h1>
-      </div>
-    </div>
-  </div>
-  <a href="/new" class="btn btn-default btn-success">Create Party</a>
-  <div class="row">
+      </div><!-- /page-header -->
+    </div><!-- /.col-sm-12 -->
+  </div><!-- /row -->
+
+	<div class="row">
+		<div class="col-lg-6">
+			<form action="/" method="get" class="form-inline">
+				<div class="input-group">
+					<input type="text" name="query" class="form-control" placeholder="Search for...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="submit">Search!</button>
+					</span>
+				</div><!-- /input-group -->
+			</form><!-- /form -->
+		</div><!-- /.col-lg-6 -->	
+	</div><!-- /.row -->
+	
+	<a href="/new" class="btn btn-default btn-success">Create Party</a>
+
+	<div class="row">
     <div class="col-sm-9">
       <table class="table">
         <thead>
@@ -16,7 +31,7 @@
             <th>Date</th>
             <th class="td-actions">Actions</th>
           </tr>
-        </thead>
+        </thead><!-- /thead -->
           <% @parties.each do |party| %>
           <tr>
             <td>
@@ -37,8 +52,9 @@
             </td>
           </tr>
           <% end %>
-      </table>
-    </div>
+      </table><!-- /table -->
+    </div><!-- /.col-sm-9 -->
+
     <div class="col-sm-3">
       <div class="button-group">
         <a href="/?sort=asc" type="button" class="btn btn-default">
@@ -49,7 +65,7 @@
           <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
           Order by year
         </a>
-      </div>
-    </div>
-  </div>
-</div>
+			</div><!-- /button-group -->
+		</div><!-- /.col-sm-3 -->
+	</div><!-- /.row -->
+</div><!-- /.container -->
