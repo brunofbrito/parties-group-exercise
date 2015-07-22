@@ -1,3 +1,7 @@
 class Party < ActiveRecord::Base
-	has_many :attendee
+	has_many :attendees
+
+  def to_s
+    name
+  end
 end
