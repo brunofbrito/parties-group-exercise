@@ -5,10 +5,16 @@ use Rack::Flash
 
 # list of all parties
 get '/' do
-  @parties = Party.all
+  if params[:query]
+  	@parties = Party.where("lower(name) = ?", params[:query].downcase)
+  else
+  	@parties = Party.all
+  end
   erb :index
 end
+
 # form to create a new party
+
 get '/new' do
 	erb :new
 end
@@ -24,6 +30,9 @@ post '/create' do
 		})
 	redirect '/', notice: 'Party created'
 end
+
+
+
 # show individual post
 get '/:id' do
 	@party = Party.find(params[:id])
@@ -71,3 +80,5 @@ get '/:party_id/:id/remove_attendee' do
 	Attendee.destroy(params[:id])
 	redirect "/#{params[:party_id]}", notice: 'Attendee removed'
 end
+
+
