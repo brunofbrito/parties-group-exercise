@@ -36,12 +36,10 @@ post '/create' do
 	redirect '/', notice: 'Party created'
 end
 
-
-
-# show individual post
+# show individual party
 get '/:id' do
 	@party = Party.find(params[:id])
-	@attendee = Attendee.all
+	@attendees = @party.attendees
 	erb :show
 end
 
@@ -86,4 +84,12 @@ get '/:party_id/:id/remove_attendee' do
 	redirect "/#{params[:party_id]}", notice: 'Attendee removed'
 end
 
-
+get '/:party_id/export' do
+  party = Party.find(params[:party_id])
+  File.open("#{party.name}.txt", "w") do |f|
+    party.attendees.each do |attendee|
+      f << "#{attendee.name}\n"
+    end
+  end
+  redirect "/#{params[:party_id]}"
+end

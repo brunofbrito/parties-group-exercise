@@ -27,7 +27,7 @@
             <td><%= @party.lat %></td>
             <td><%= @party.long %></td>
             <td><%= @party.starts_at %></td>
-						<td><%= @party.attendee.count %></td>
+						<td><%= @party.attendees.count %></td>
             <td class="td-actions">
               <a href="/" class="btn">
                 Back
@@ -45,7 +45,7 @@
 					<th>Email</th>
 					<th class="td-actions">Actions</th>
 				</thead>
-				<% @attendee.each do |attendee| %>
+				<% @attendees.each do |attendee| %>
 				<tr>
 					<td><%= attendee.name %></td>
 					<td><%= attendee.email %></td>
@@ -55,6 +55,11 @@
 			</table>
 		</div>
 	</div>
+  <div class="row">
+    <div class="col-sm-9">
+    <a href="<%= @party.id %>/export">Export attendee list</a>
+    </div>
+  </div>
 	<div class="row">
 		<div class="col-sm-9">
 			<h3>Add attendee to party</h3>
