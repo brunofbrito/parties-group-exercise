@@ -69,8 +69,12 @@ end
 
 # route to add users to party
 post '/add_attendee/:id' do
-	Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
-	redirect "/#{params[:id]}"
+  if params[:name].empty?
+	 redirect "/#{params[:id]}", error: 'Attendee field empty'
+  else
+    Attendee.create(name: params[:name], email: params[:email], party_id: params[:id])
+    redirect "/#{params[:id]}", notice: 'Attendee successfuly addede'
+  end
 end
 
 
