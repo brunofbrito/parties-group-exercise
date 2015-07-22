@@ -6,31 +6,33 @@
 			</div><!-- /.page-header -->
 		</div><!-- /.col-sm-12 -->
 	</div><!-- /.row -->
+
+	<%= @party.errors.full_messages %>
 	
 	<div class="row">
 		<div class="col-lg-6">
 			<form method="post" action="/create" class="user-form">
 				<div class="input-group">
 					<label for="name">Name</label>
-					<input type="text" name="name" required class="form-control">
+					<input type="text" name="name" class="form-control">
 				</div>	
 				<div class="input-group">
 					<label for="address">Address</label>
-					<input type="text" name="address" required class="form-control">
+					<input type="text" name="address" class="form-control">
 				</div>
 				<div class="input-group">
 					<label for="lat">Latitude</label>
-					<input type="text" name="lat" required class="form-control">
+					<input type="text" name="lat" class="form-control">
 				</div>
 				
 				<div class="input-group">
 					<label for="long">Longitude</label>
-					<input type="text" name="long" required class="form-control">
+					<input type="text" name="long" class="form-control">
 				</div>
 				
 				<div class="input-group">
 				<label for="starts_at">Date</label>
-				<input type="date" name="starts_at" required class="form-control">
+				<input type="date" name="starts_at" class="form-control">
 				</div>
 				<br>
 				<span class="input-group-btn">

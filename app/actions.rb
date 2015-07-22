@@ -22,23 +22,25 @@ end
 # form to create a new party
 
 get '/new' do
+	@party = Party.new
 	erb :new
 end
 
 # method to save a new party, the /new route should point here
 post '/create' do
-	if params.empty?
-		flash[:error] = "Empty fields"
-	else	
-	Party.create({
+	@party = Party.new({
 		name: params[:name],
 		address: params[:address],
 		lat: params[:lat],
 		long: params[:long],
 		starts_at: params[:starts_at]
 		})
+
+	if @party.save
+		redirect '/', notice: 'Party created'
+	else
+		erb :new
 	end
-	redirect '/', notice: 'Party created'
 end
 
 # show individual party
