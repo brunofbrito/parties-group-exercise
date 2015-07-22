@@ -6,7 +6,7 @@ use Rack::Flash
 # list of all parties
 get '/' do
   if params[:query]
-  	@parties = Party.where("lower(name) = ?", params[:query].downcase)
+  	@parties = Party.where("lower(name) LIKE ?", "%#{params[:query].downcase}%")
   elsif params[:sort] == "asc"
   	@parties = Party.order(:starts_at)
   elsif params[:sort] == "desc"
