@@ -101,9 +101,13 @@ get '/:party_id/export' do
 end
 
 get '/:party_id/import' do
-  party = Party.find(params[:party_id])
-  CSV.foreach(params[:import], headers: true) do |row|
-   party.attendees.create(row.to_hash)
- end
-  redirect "/#{params[:party_id]}"
+  if params[:import]
+    party = Party.find(params[:party_id])
+    CSV.foreach(params[:import], headers: true) do |row|
+     party.attendees.create(row.to_hash)
+   end
+    redirect "/#{params[:party_id]}"
+  else
+    redirect "/#{params[:party_id]}", error: 'Please add a CSV file!'
+  end
 end
