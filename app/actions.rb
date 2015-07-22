@@ -92,17 +92,8 @@ end
 
 get '/:party_id/import' do
   party = Party.find(params[:party_id])
-  # CSV.open("attendees.csv", "r") do |f|
-  #   f = CSV.parse("attendees.csv", :headers => true) do |row|
-  #   	puts row.inspect
-  #   	Attendee.create!(row.to_hash)
-  #   end
-
-    # party.attendees.each do |attendee|
-      # f << "#{attendee.name}\n"
-   CSV.foreach("attendees.csv", headers: true) do |row|
-   	puts row.to_hash.inspect
-   	party.attendees.create(row.to_hash)
-  end
+  CSV.foreach(params[:import], headers: true) do |row|
+   party.attendees.create(row.to_hash)
+ end
   redirect "/#{params[:party_id]}"
 end
