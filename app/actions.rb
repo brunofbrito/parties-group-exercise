@@ -93,3 +93,16 @@ get '/:party_id/export' do
   end
   redirect "/#{params[:party_id]}"
 end
+
+get '/:party_id/import' do
+  party = Party.find(params[:party_id])
+  CSV.open("#{party.name}.txt", "r") do |f|
+    csv = CSV.parse(filename, :headers => true) do |row|
+    	Attendee.create!(row.to_hash)
+    	end 
+    # party.attendees.each do |attendee|
+      # f << "#{attendee.name}\n"
+   
+  end
+  redirect "/#{params[:party_id]}"
+end
