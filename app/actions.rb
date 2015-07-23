@@ -100,12 +100,12 @@ get '/:party_id/export' do
   redirect "/#{params[:party_id]}"
 end
 
-get '/:party_id/import' do
+post '/:party_id/import' do
+  import = params[:import] #:import é uma hash
+  party = Party.find(params[:party_id])
   if params[:import]
-    party = Party.find(params[:party_id])
-    CSV.foreach(params[:import], headers: true) do |row|
-     party.attendees.create(row.to_hash)
-   end
+    party.import_csv(import[:tempfile]) 
+    # O tempfile é o caminho para o ficheiro após o upload (params quando importam é uma hash) - tempfile faz parte da hash :file)
     redirect "/#{params[:party_id]}"
   else
     redirect "/#{params[:party_id]}", error: 'Please add a CSV file!'
