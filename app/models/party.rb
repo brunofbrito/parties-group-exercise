@@ -11,4 +11,12 @@ class Party < ActiveRecord::Base
       end
   end
 
+	def export_txt
+	  File.open("#{name}.txt", "w") do |f|
+    attendees.each do |attendee|
+      f << "#{attendee.name}\n"
+    end
+  end
+ 
+	end
 end

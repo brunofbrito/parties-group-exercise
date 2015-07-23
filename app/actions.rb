@@ -92,12 +92,8 @@ end
 
 get '/:party_id/export' do
   party = Party.find(params[:party_id])
-  File.open("#{party.name}.txt", "w") do |f|
-    party.attendees.each do |attendee|
-      f << "#{attendee.name}\n"
-    end
-  end
-  redirect "/#{params[:party_id]}"
+party.export_txt
+ redirect "/#{params[:party_id]}"
 end
 
 post '/:party_id/import' do
